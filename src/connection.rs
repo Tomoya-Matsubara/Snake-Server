@@ -31,7 +31,7 @@ pub fn send<T>(stream: &mut Stream, object: T) where T: Serialize {
 /// Wait for client message, read it and deserialize it depeding on T
 pub fn receive<'a, T>(stream: &mut Stream, response: &'a mut String) -> Result<T, ()> where T: Deserialize<'a> {
     let message = stream.reader.read_line(response);
-    let mut read_num;
+    let read_num;
 
     // Error handling
     match message {
